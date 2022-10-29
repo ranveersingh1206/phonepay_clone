@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:rowcrossalignment/pg.dart';
 import 'package:rowcrossalignment/row.dart';
+import 'package:rowcrossalignment/testpg.dart';
 
 class HomePg extends StatelessWidget {
   const HomePg({super.key});
@@ -29,6 +30,11 @@ class HomePg extends StatelessWidget {
             },
             child: Text("Page2"),
           ),
+          ElevatedButton(
+              onPressed: () {
+                Get.to(() => Phonepay());
+              },
+              child: Text("phone pay"))
         ],
       ),
     );

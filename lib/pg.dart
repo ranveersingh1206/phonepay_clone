@@ -3,9 +3,14 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class UII extends StatelessWidget {
+class UII extends StatefulWidget {
   const UII({super.key});
 
+  @override
+  State<UII> createState() => _UIIState();
+}
+
+class _UIIState extends State<UII> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,18 +33,18 @@ class UII extends StatelessWidget {
                     child: Row(
                       children: [
                         Image.asset("assets/dogpic.png"),
-                        SizedBox(width: 24),
+                        const SizedBox(width: 24),
                         Image.asset("assets/vector.png")
                       ],
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
-                children: [
+                children: const [
                   Text(
                     "Recently added",
                     style: TextStyle(fontSize: 15),
@@ -47,13 +52,13 @@ class UII extends StatelessWidget {
                   Icon(Icons.arrow_drop_down_rounded),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               Column(
                 children: [
                   Row(
-                    children: [
+                    children: const [
                       Box(
                         text: "Data strutures and algo",
                         textt: " ",
@@ -71,11 +76,11 @@ class UII extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Row(
-                    children: [
+                    children: const [
                       Box(
                         text: "DSA Notes",
                         textt: "",
@@ -115,7 +120,7 @@ class Box extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       width: 159,
       // height: 150,
       color: Colors.grey.shade200,
@@ -123,28 +128,28 @@ class Box extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.asset("assets/folderimg.png"),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Text(
             text,
-            style: TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 20),
           ),
           Row(
             children: [
               Text(
                 textt,
-                style: TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 20),
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(
             children: [
               Text(size),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Text(sizee),

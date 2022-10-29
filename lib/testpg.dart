@@ -3,8 +3,22 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
-class Phonepay extends StatelessWidget {
+class Phonepay extends StatefulWidget {
   const Phonepay({super.key});
+
+  @override
+  State<Phonepay> createState() => _PhonepayState();
+}
+
+class _PhonepayState extends State<Phonepay> {
+  late final ScrollController scrollController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    scrollController = ScrollController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,17 +30,44 @@ class Phonepay extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            NavItem(icon: Icons.home, text: "Home"),
-            NavItem(icon: Icons.store, text: "Stores"),
-            NavItem(icon: Icons.inbox, text: "Insurance"),
-            NavItem(icon: Icons.currency_rupee_sharp, text: "Wealth"),
-            NavItem(icon: Icons.history, text: "History"),
+            NavItem(
+              icon: Icons.home,
+              text: "Home",
+              ontap: () {
+                scrollController.jumpTo(0);
+              },
+            ),
+            NavItem(
+              icon: Icons.store,
+              text: "Stores",
+              ontap: () {
+                Get.back();
+              },
+            ),
+            NavItem(
+              icon: Icons.inbox,
+              text: "Insurance",
+              ontap: () {
+                scrollController.jumpTo(200);
+              },
+            ),
+            NavItem(
+              icon: Icons.currency_rupee_sharp,
+              text: "Wealth",
+              ontap: () {},
+            ),
+            NavItem(
+              icon: Icons.history,
+              text: "History",
+              ontap: () {},
+            ),
           ],
         ),
       ),
       backgroundColor: Colors.indigo.shade300,
       body: SafeArea(
         child: SingleChildScrollView(
+          controller: scrollController,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             child: Column(
@@ -198,32 +239,38 @@ class Phonepay extends StatelessWidget {
 class NavItem extends StatelessWidget {
   final IconData icon;
   final String text;
+  final void Function() ontap;
   const NavItem({
     Key? key,
     required this.icon,
     required this.text,
+    required this.ontap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-            padding: EdgeInsets.all(5),
-            decoration: BoxDecoration(
-                shape: BoxShape.circle, color: Color.fromARGB(255, 19, 18, 18)),
-            child: Icon(
-              icon,
-              color: Colors.white,
-            )),
-        SizedBox(
-          height: 5,
-        ),
-        Text(
-          text,
-        ),
-      ],
+    return InkWell(
+      onTap: ontap,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+              padding: EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color.fromARGB(255, 19, 18, 18)),
+              child: Icon(
+                icon,
+                color: Colors.white,
+              )),
+          SizedBox(
+            height: 5,
+          ),
+          Text(
+            text,
+          ),
+        ],
+      ),
     );
   }
 }
